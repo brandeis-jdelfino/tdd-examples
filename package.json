@@ -1,0 +1,22 @@
+{
+  "name": "tdd-examples",
+  "version": "1.0.0",
+  "description": "TDD examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandeis-jdelfino/tdd-examples.git"
+  },
+  "author": "Joe Delfino",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/brandeis-jdelfino/tdd-examples/issues"
+  },
+  "homepage": "https://github.com/brandeis-jdelfino/tdd-examples#readme",
+  "dependencies": {
+    "jest": "^29.7.0"
+  }
+}
