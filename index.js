@@ -1,4 +1,5 @@
 const fs = require('fs');
+const math = require('mathjs');
 
 function loadFileIntoNumberAnalyzer(filePath) {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -16,27 +17,17 @@ class NumberAnalyzer {
     this.numbers = fileContent.split('\n').map(Number);
   }
 
-  computeAverage() {
-    const sum = this.numbers.reduce((acc, num) => acc + num, 0);
-    return sum / this.numbers.length;
-  }
+computeAverage() {
+    return math.mean(this.numbers);
+}
 
-  computeMedian() {
-    const sortedNumbers = this.numbers.sort((a, b) => a - b);
-    const middleIndex = Math.floor(sortedNumbers.length / 2);
-    if (sortedNumbers.length % 2 === 0) {
-      return (sortedNumbers[middleIndex - 1] + sortedNumbers[middleIndex]) / 2;
-    } else {
-      return sortedNumbers[middleIndex];
-    }
-  }
+computeMedian() {
+    return math.median(this.numbers);
+}
 
-  computeStandardDeviation() {
-    const mean = this.computeAverage();
-    const squaredDifferences = this.numbers.map(num => Math.pow(num - mean, 2));
-    const variance = squaredDifferences.reduce((acc, num) => acc + num, 0) / this.numbers.length;
-    return Math.sqrt(variance);
-  }
+computeStandardDeviation() {
+    return math.std(this.numbers, 'uncorrected');
+}
 }
 
 module.exports = {
